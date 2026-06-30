@@ -18,7 +18,8 @@
 
 | Capa | Tecnología | Por qué |
 |------|-----------|---------|
-| Frontend | Vanilla TypeScript + Vite | Tipado, hot reload en dev, bundle estático pequeño. El flujo del juego es lineal; no necesita React. |
+| Frontend | Svelte 5 + Vite | Reactividad sin runtime pesado, componentes scopados, transiciones built-in. Cubre juego + dashboard admin. |
+| UI | CSS puro (scoped por componente) | Svelte scopea automáticamente. CSS nativo 2025 tiene nesting, custom properties, `@layer`. Sin Tailwind, sin SCSS. |
 | Bundler / Dev server | Vite | Es el estándar actual. Rápido, sencillo, HMR sin dolor. |
 | Backend | Go 1.24+ | Binario nativo, bajo consumo de RAM, sin dependencias de runtime. Para un CRUD + auth + timer, es directo. |
 | Router HTTP | `chi` | Minimalista, compatible con middleware estándar de Go. Si prefieres algo más completo, `echo` también vale. |
@@ -203,7 +204,7 @@ DOMAIN=find-game.example.com
 
 ### ¿Por qué no React / Next.js / Remix?
 
-El flujo del juego es secuencial: landing → 5 pantallas de nivel → resultado → leaderboard. No hay estados complejos que compartir entre componentes distantes, no hay listas virtuales, no hay formularios dinámicos. Vanilla TS + un router de 50 líneas cubre todo. Si en el futuro crece (paneles admin, dashboards, editor de cartas), ahí sí justifica migrar a React.
+El flujo del juego es secuencial, sí, pero el dashboard de admin (tablas de cartas, formularios de creación, estadísticas de uso) justifica un framework. Svelte cubre ambos casos: el juego es trivial en Svelte (estado reactivo con variables normales, transiciones built-in) y el admin también (tablas, formularios, bindings bidireccionales sin boilerplate). No necesitamos React para esto.
 
 ### ¿Por qué `sqlc` y no GORM / ent / Prisma?
 
