@@ -14,7 +14,7 @@ Juego diario de observación visual. Cada día se publica una "carta" con 5 nive
 
 - **Una carta por día**. Todos los jugadores ven la misma carta.
 - **Un intento por jugador por día**. No hay reintentos si fallas.
-- **Reset a las 00:00 UTC** (o zona horaria configurada). La carta anterior se archiva; la nueva se activa.
+- **Reset a las 00:00 UTC**. La carta anterior se archiva; la nueva se activa. No depende de la zona horaria del servidor ni de la ubicación del jugador.
 
 ---
 
